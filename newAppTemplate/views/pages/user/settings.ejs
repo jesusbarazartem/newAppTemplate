@@ -1,0 +1,54 @@
+<div id="settings" class="container-lg bg-light" style="min-height: 740px;" v-cloak>
+
+  <main class="form shadow-lg my-5 py-5"
+    style="height: 100%; width: 100%; max-width: 400px; padding: 10px; margin: auto;">
+
+    <div class="container">
+      <% if (user.avatar && user.avatar !="" ) { %>
+        <img class="rounded-circle mx-auto d-block w-50"
+          style="aspect-ratio: 1/1; object-fit: cover; border-radius: 10%;"
+          src="images/usersAvatars/<%=user.avatar%>" />
+        <% } else { %>
+          <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+          <% } %>
+    </div>
+
+    <form id="updateuserphoto" action="/update-user-avatar" method="POST" encType="multipart/form-data">
+      <div class="input-group my-3">
+        <input type="file" class="form-control" id="avatar" name="avatar">
+        <button class="btn btn-success" type="submit" for="avatar">Upload</button>
+      </div>
+    </form>
+
+    <form id="updateuser" action="/update-user-info" method="POST">
+
+      <div class="form-floating">
+        <input type="hidden" id="id" name="id" value="<%=user.id%>">
+      </div>
+      <div class="form-floating">
+        <input type="text" class="form-control mt-2" id="name" name="name" placeholder="Full Name" required
+          value="<%=user.fullName%>">
+        <label for="name">Full Name</label>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control mt-2" id="email" name="email" placeholder="Email Address" required
+          value="<%=user.emailAddress%>">
+        <label for="email">E-mail Address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control mt-2" id="password" name="password" placeholder="Password" required>
+        <label for="password">New Password</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control mt-2" id="passwordCheck" name="passwordCheck"
+          placeholder="Insert Again Password" required>
+        <label for="passwordCheck">Insert Password Again</label>
+      </div>
+      <button class="w-100 mt-4 btn btn-primary" type="submit">Update</button>
+      <a href="/dashboard" type="button" class="w-100 mt-2 btn btn-danger">Cancel</a>
+
+    </form>
+
+  </main>
+
+</div>

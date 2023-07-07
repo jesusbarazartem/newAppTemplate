@@ -1,0 +1,9 @@
+<div class="container-lg mt-2">
+    <% flash.get('msg').forEach(function (data) { %>
+        <div class="alert alert-<%=data.type%> d-flex align-items-center alert-dismissible fade show" role="alert">
+            <i class="fa fa-<%=data.icon%>" aria-hidden="true">
+                <%=data.msg%>
+            </i>
+        </div>
+        <% }) %>
+</div>
